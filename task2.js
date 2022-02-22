@@ -25,7 +25,7 @@ const user2 = web3.eth.accounts.wallet.add(pvtkey2);
 
 // console.log('user1', user1)
 
-const amount = web3.utils.toHex(web3.utils.toWei("0.2", "ether"));
+const amount = web3.utils.toHex(web3.utils.toWei("2", "ether"));
 const approvalAmount = web3.utils.toHex(web3.utils.toWei("10000000000000000000000000000", "ether"));
 // const tokenAddress = "0x031a9dD354B964A90Fd82951119612ADca3EAa82"; //DAFI ADDRESS
 const tokenAddress = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //LINK ADDRESS
@@ -94,8 +94,8 @@ const transferFrom = async () => {
     try {
       console.log(amount);
       smart_contract_interface.methods
-        .transferFrom(user1.address, user2.address, amount)
-        .send({ from: user2.address, gasLimit: "200000" }, function (err, res) {
+        .transferFrom(user1.address, user2.address, amount) 
+        .send({ from: user2.address, gasLimit: "200000" }, function (err, res) { // in transferFrom case we gotta need provide address which is allowed to spend that token in from property of .send()
           if (err) {
             console.log("An error occured", err);
             return;
@@ -109,6 +109,6 @@ const transferFrom = async () => {
 };
 
 getBalance();
-// transferTokens();
+transferTokens();
 // approvalFunc();
-transferFrom();
+// transferFrom();

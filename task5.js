@@ -7,7 +7,7 @@ const url = "https://rinkeby.infura.io/v3/e586643099c84bb8b060976da87dfc6c";
 const web3 = new Web3(url);
 
 const txnHash =
-  "0x97183b6e287d2ff4dae83d97af45a2d3f595285976a106c289e0042c431b4793";
+  "0x2f6189726e3d5e3b1e56f2dbca7f1ae60d21dc29e91a7fbb8004c8dbf1fc8587";
 
 web3.eth.getTransactionReceipt(txnHash, function (err, res) {
   try {

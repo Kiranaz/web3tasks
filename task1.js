@@ -36,7 +36,7 @@ balances();
 
 web3.eth.getTransactionCount(address2, (err, txCount) => {
   const txObject = {
-    nonce: web3.utils.toHex(txCount),
+    nonce: web3.utils.toHex(txCount), //'how many confirmed transactions this account has sent previously?'
     to: address1,
     value: web3.utils.toHex(web3.utils.toWei("0.05", "ether")),
     gasLimit: web3.utils.toHex(21000),

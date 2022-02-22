@@ -7,7 +7,7 @@ const web3 = new Web3(url);
 const eventSubs = async () => {
     try {
       let options = {
-        address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709", //An address or a list of addresses to only get logs from particular account(s).
+        address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709", //Contract Address / An address or a list of addresses to only get logs from particular account(s).
         topics: [
           "null", //An array of values which must each appear in the log entries
         ],

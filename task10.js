@@ -37,8 +37,8 @@ async function getContractCreatorAddress() {
 const contractDeployerAd = async () => {
     let apikey = "UBY73PQ1HIHCY9D5348318DFK92ZIP723E";
     let latestBlock = await web3.eth.getBlockNumber()
-    let TxList = await axios.get(`https://api-rinkeby.etherscan.io/api?module=account&action=txlist&address=${tokenAddress}&startblock=0&endblock=${latestBlock}&page=1&offset=3&sort=asc&apikey=${apikey}`);
-    let res = await web3.eth.getTransactionReceipt(TxList.data.result[0].hash); //first transaction for the given contract address will definitely be of its own creation
+    let transactions = await axios.get(`https://api-rinkeby.etherscan.io/api?module=account&action=txlist&address=${tokenAddress}&startblock=0&endblock=${latestBlock}&page=1&offset=3&sort=asc&apikey=${apikey}`);
+    let res = await web3.eth.getTransactionReceipt(transactions.data.result[0].hash); //first transaction for the given contract address will definitely be of its own creation
 
    console.log('Contract Deployer: ', res.from);
 }

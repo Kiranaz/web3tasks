@@ -27,17 +27,17 @@ const tokenHolders = async () => {
     })
 
 
-  res.map((tx, key) => {
+  res.map((tx) => {
       addressesMadeTxUsingToken.push(tx.returnValues.from)
       addressesMadeTxUsingToken.push(tx.returnValues.to)
     })
 
-    addressesMadeTxUsingToken.map(async(address, key) => {
+    addressesMadeTxUsingToken.map(async(address, index) => {
       let balance = await web3.utils.fromWei(await contract.methods.balanceOf(address).call());
       if(parseInt(balance) > 0){
         count++;
       }
-      if(key == addressesMadeTxUsingToken.length - 1){
+      if(index == addressesMadeTxUsingToken.length - 1){
         console.log('Number of token holders: ', count);
       }
     })

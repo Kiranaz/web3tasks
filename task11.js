@@ -22,7 +22,7 @@ const tokenHolders = async () => {
     // console.log('fromBlock--->', res.blockNumber); //2746114 -- first block having LINK token
     
      let res = await contract.getPastEvents('Transfer', {
-         fromBlock: 10216727, //should be res.blockNumber but getting Error: Returned error: query returned more than 10000 results
+         fromBlock: 10217795, //should be res.blockNumber but getting Error: Returned error: query returned more than 10000 results
          toBlock: 'latest'
     })
 
@@ -31,7 +31,7 @@ const tokenHolders = async () => {
       addressesMadeTxUsingToken.push(tx.returnValues.from)
       addressesMadeTxUsingToken.push(tx.returnValues.to)
     })
-
+    addressesMadeTxUsingToken = [...new Set(addressesMadeTxUsingToken)];
     addressesMadeTxUsingToken.map(async(address, index) => {
       let balance = await web3.utils.fromWei(await contract.methods.balanceOf(address).call());
       if(parseInt(balance) > 0){
